@@ -11,6 +11,10 @@ client.on('qr', qr => {
 
 client.on('ready', () => {
     console.log('Client is ready!');
+    client.getChats().then(chats => {
+        const contact = chats.find((chat) => chat.name === "Papá");
+        client.sendMessage(contact.id._serialized, "Bata");
+    });
 });
 
 client.on('message', message => {
